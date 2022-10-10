@@ -62,12 +62,21 @@ $(document).ready(function(){
         gamestate.currentTurn = coinFlip();
         gamestate.playerNames[0]=$('#playerOneName').val();
         gamestate.playerNames[1]=$('#playerTwoName').val();
-        gamestate.playerSymbols[0]=$('#playerOnePic').val();
-        gamestate.playerSymbols[1]=$('#playerTwoPic').val();
-        console.log(gamestate.playerNames,gamestate.playerSymbols)     
+        var input = document.getElementById("playerOnePic");
+        var fReader = new FileReader();
+        fReader.readAsDataURL(input.files[0]);
+        fReader.onloadend = function(event){
+            gamestate.playerSymbols[0] = event.target.result;
+        }
+        var input = document.getElementById("playerTwoPic");
+        var fReader = new FileReader();
+        fReader.readAsDataURL(input.files[0]);
+        fReader.onloadend = function(event){
+            gamestate.playerSymbols[1] = event.target.result;
+        }
     })
 });
-
+// filesreader
 function roundCount(){
     gamestate.roundCount++
     if (gamestate.roundCount === 10 ){
@@ -188,3 +197,4 @@ function checkHori(player,index){
 function gameOver(){
     console.log(`${gamestate.playerNames[gamestate.currentTurn]} Wins!`)
 }
+
