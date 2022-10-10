@@ -1,0 +1,32 @@
+.container{
+    max-width: 1000px;
+    background-color: antiquewhite;
+    margin: 0 auto;
+}
+body{
+    background-color: aliceblue;
+}
+#gameSpace{
+    margin: 0 auto;
+    display: block;
+}
+.gameSquare{
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    display: inline-block;
+}
+.red{
+    background-color: red;
+}
+
+img{
+    height: 290px;
+    width: 290px;
+}
+.score{
+    display: inline-block;
+    width: 45%;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
