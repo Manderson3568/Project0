@@ -1,6 +1,6 @@
 const gamestate={
     playerNames:["player-One","player-Two"],
-    playerSymols:['img/x.jpeg','img/0.png'],
+    playerSymbols:['img/x.jpeg','img/0.png'],
     currentTurn: 0,
     board: ["","","","","","","","",""],
     roundCount:1,
@@ -39,9 +39,10 @@ function startGame(){
 }
 
 $(document).ready(function(){
+
     $('.gameSquare').on('click',function(e){
         const gameSquare = gamestate[e.target.id];
-        $(e.target).html(`<img src="${gamestate.playerSymols[gamestate.currentTurn]}"></img>`)
+        $(e.target).html(`<img src="${gamestate.playerSymbols[gamestate.currentTurn]}"></img>`)
         if(gameSquare[0]===''){
             gameSquare[0] = gamestate.playerNames[gamestate.currentTurn]
             buildBoard();
@@ -56,6 +57,14 @@ $(document).ready(function(){
         }else{
             console.log('already taken')
         }   
+    })
+    $('#start').on('click', function(){
+        gamestate.currentTurn = coinFlip();
+        gamestate.playerNames[0]=$('#playerOneName').val();
+        gamestate.playerNames[1]=$('#playerTwoName').val();
+        gamestate.playerSymbols[0]=$('#playerOnePic').val();
+        gamestate.playerSymbols[1]=$('#playerTwoPic').val();
+        console.log(gamestate.playerNames,gamestate.playerSymbols)     
     })
 });
 

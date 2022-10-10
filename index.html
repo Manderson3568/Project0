@@ -17,13 +17,27 @@
             <nav></nav>
         </header>
         <main>
-            <div class="score">
-                <p id="p1">Player One: </p>
-                <p id="p1Score">Score: </p>
+            <div class="start">
+                <div class="score">
+                    <input type="text" id="playerOneName" placeholder="Player 1 name">
+                    <input type="file" name="playerOnePic" id="playerOnePic">
+                </div>
+                <div class="score right">
+                    <input type="text" id="playerTwoName" placeholder="Player 2 name">
+                    <input type="file" name="playerTwoPic" id="playerTwoPic">
+                </div>
+                <button id="start">Start</button>
             </div>
-            <div class="score">
-                <p id="p2">Player Two: </p>
-                <p id="p2Score">Score: </p>
+            <div class="play hidden">
+                <div class="score">
+                    <p id="p1">Player One: </p>
+                    <p id="p1Score">Score: </p>
+                </div>
+                <div class="score right">
+                    <p id="p2">Player Two: </p>
+                    <p id="p2Score">Score: </p>
+                </div>
+                <div><h3 id="currentTurn"></h3></div>
             </div>
             <div id="gameSpace">
                 <div class="gameSquare" id="topLeft"></div>
