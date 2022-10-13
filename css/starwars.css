@@ -1,0 +1,181 @@
+body{
+    background-color: black;
+}
+.datapad{
+    background-color: #202020;
+    background-image: url("../img/starwarsBorder.png");
+    /* background: url("img/starwarsBorder.png"); */
+    width: 1200px;
+    height: 994px;
+    margin: 0 auto;
+    border-radius: 40px;
+    padding: 63px 50px 0px 50px;
+}
+.content{
+    background-color: #202020;
+    /* should make the text start at the bottom of the screen */
+    /* margin: 10% 0 0 0; */
+    position: relative;
+    height:940px;
+    width: 1130px;
+    overflow: hidden;
+    /* margin: 0 auto; */
+    box-sizing: border-box;
+    margin-left:10px;
+    color: #ffc909;
+}
+
+#scrollWrapper{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    perspective: 450px;
+}
+#scrollBox{
+    color: #ffc909;
+    font-size: 3vw;
+    text-align: justify;
+    line-height: 1.5em;
+    font-weight: bold;
+    position: relative;
+    animation: scroll 120s linear forwards;
+}
+h1, h2{
+    text-align: center;
+}
+@keyframes scroll{
+    from{top:1000px; transform: translateZ(0) rotateX(20deg);}
+    to{top:-9000px; transform: translateZ(-2500px) rotateX(23deg);}
+}
+.hidden{
+    display: none;
+}
+.half{
+    height: 100%;
+    width: 45%;
+    display: inline-block;
+    padding-top: 100px;
+}
+#left{
+    background: rgb(54,82,143);
+    background: linear-gradient(90deg, rgba(54,82,143,0) 10%, rgba(12, 71, 134, 0.75) 50%, rgba(54,82,143,0) 90%);    
+    /* background-color: red; */
+}
+#right{
+    float: right;
+    background: rgb(143,54,54);
+    background: linear-gradient(90deg, rgba(143,54,54,0) 9%, rgba(109, 9, 9, 0.764) 50%, rgba(143,54,54,0) 89%);
+    background-repeat: no-repeat;
+}
+.logo{
+    display: block;
+    opacity: 90%;
+    height: 400px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+input{
+    margin-top: 50px;
+    display: block;
+    margin: 0 auto;
+    height:50px;
+    width:250px;
+    background-color: #181818;
+    border: 2px solid #404040;
+    line-height: 50px;
+    font-size:40px;
+    color: aqua;
+    text-align: center;
+}
+.logoFlareRed{
+    background: rgb(255,255,255);
+    background:radial-gradient(circle, rgba(255,255,255,.75) 7%, rgba(204,33,33,0.48082983193277307) 52%, rgba(204,33,33,0) 68%);
+    height: 420px;
+    padding-top: 10px;
+}
+.logoFlareBlue{
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,.75) 7%, rgba(16, 91, 171, 0.5) 52%, rgba(204,33,33,0) 68%);
+    height: 420px;
+    padding-top: 10px;
+}
+#joinHeading{
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 425px;
+    z-index: 1;
+}
+#destiny{
+    display: block;
+    margin: 0 auto;
+    height:60px;
+    width:250px;
+    background-color: #181818;
+    border: 2px solid #404040;
+    line-height: 60px;
+    font-size:40px;
+    position: absolute;
+    z-index: 1;
+    top: 750px;
+    left: 445px;
+}
+.caps{
+    text-transform: uppercase;
+}
+.gameSquare{
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgb(231, 187, 57);
+    display: inline-block;
+    margin: 10px;
+}
+.gameContainer{
+    width: 550px;
+    height: 550px;
+    display: block;
+    margin: 20px auto;
+}
+.hilt{
+    position: absolute;
+    pointer-events: none;
+}
+#hiltBottomLeft{
+    top: 535px;
+    left: 235px;
+    height: 100px;
+    transform: rotate(60deg);
+}
+#hiltTopLeft{
+    top: 311px;
+    left: 235px;
+    height: 100px;
+    transform: rotate(300deg)rotateX(180deg);
+}
+#hiltLeftBottom{
+    top: 735px;
+    left: 455px;
+    height: 100px;
+    transform: rotate(-16deg);
+}
+#hiltRightBottom{
+    top: 735px;
+    left: 634px;
+    height: 90px;
+    transform: rotate(-16deg);
+}
+.playerStats{
+    display: inline-block;
+    width: 45%;
+    border: 1px solid #ffc909;
+    height: 130px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.right{
+    float: right;
+}
+.gameSquare img {
+    height: 100%;
+    width: 100%;
+}

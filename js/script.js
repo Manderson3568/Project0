@@ -1,6 +1,7 @@
 const gamestate={
     playerNames:["player-One","player-Two"],
     playerSymbols:['img/x.jpeg','img/0.png'],
+    scores:[0,0],
     currentTurn: 0,
     board: ["","","","","","","","",""],
     roundCount:1,
@@ -39,11 +40,21 @@ function startGame(){
 }
 
 $(document).ready(function(){
+    let h = window.innerHeight/2;
+    console.log(h)
+    let w = window.innerWidth/2;
+    console.log(w)
+    $('.start').css({
+        "position":"absolute",
+        "top":`${h-250}px`,
+        'left':`${w-250}px`
+    });
 
     $('.gameSquare').on('click',function(e){
         const gameSquare = gamestate[e.target.id];
-        $(e.target).html(`<img src="${gamestate.playerSymbols[gamestate.currentTurn]}"></img>`)
+        console.log(`ID: `, e.target.id, "gameSquare:", gameSquare);
         if(gameSquare[0]===''){
+            $(e.target).html(`<img src="${gamestate.playerSymbols[gamestate.currentTurn]}"></img>`)
             gameSquare[0] = gamestate.playerNames[gamestate.currentTurn]
             buildBoard();
             console.log(gamestate.board);
@@ -56,7 +67,8 @@ $(document).ready(function(){
             }
         }else{
             console.log('already taken')
-        }   
+        }
+        updateScreenInfo();   
     })
     $('#start').on('click', function(){
         gamestate.currentTurn = coinFlip();
@@ -74,8 +86,12 @@ $(document).ready(function(){
         fReader.onloadend = function(event){
             gamestate.playerSymbols[1] = event.target.result;
         }
+        updateScreenInfo();
+        $(".container").removeClass('blur');
+        $('.start').addClass('hidden')
     })
 });
+
 // filesreader
 function roundCount(){
     gamestate.roundCount++
@@ -84,9 +100,19 @@ function roundCount(){
     }
 }
 
+function updateScreenInfo(){
+    $('#p1').html(`Player One: ${gamestate.playerNames[0]}`);
+    $('#p2').html(`Player Two: ${gamestate.playerNames[1]}`);
+    $('#p1Score').html(`Score: ${gamestate.scores[0]}`);
+    $('#p2Score').html(`Score: ${gamestate.scores[1]}`);
+    $('#currentTurn').html(`${gamestate.playerNames[gamestate.currentTurn]}'s turn`)
+    $('#roundCount').html(`Round ${gamestate.roundCount}:`)
+}
+
 function tie(){
     console.log('its a tie')
 }
+
 function checkWin(player,index){
     checkVert(player,index);
     checkHori(player,index);
@@ -117,6 +143,7 @@ function checkVert(player,index){
         gameOver();
     }
 }
+
 function checkPosDiag(player,index){
     let win = 0;
     let checkIndex = index+4;
@@ -140,6 +167,7 @@ function checkPosDiag(player,index){
         gameOver();
     }
 }
+
 function checkNegDiag(player,index){
     let win = 0;
     let checkIndex = index+2;
@@ -195,6 +223,41 @@ function checkHori(player,index){
 
 
 function gameOver(){
-    console.log(`${gamestate.playerNames[gamestate.currentTurn]} Wins!`)
+    let h = window.innerHeight/2;
+    console.log(h)
+    let w = window.innerWidth/2;
+    console.log(w)
+    $('#endGame').css({
+        "position":"absolute",
+        "top":`${h-250}px`,
+        'left':`${w-250}px`
+    });
+    gamestate.scores[gamestate.currentTurn]++  
+    $("#winMessage").html(`${gamestate.playerNames[gamestate.currentTurn]} Wins!`);
+    $("#p1WinCount").html(`${gamestate.playerNames[0]}: ${gamestate.scores[0]}`)
+    $("#p2WinCount").html(`${gamestate.playerNames[1]}: ${gamestate.scores[1]}`)
+    $('#playAgain').on('click', resetGame)
+    $('#endGame').removeClass('hidden');
+    $('.container').addClass('blur');
+}
+
+function resetGame(){
+    console.log('play again')
+    gamestate.roundCount=1
+    gamestate.topLeft= ["",0]
+    gamestate.topCen= ["",1]
+    gamestate.topRight= ["",2]
+    gamestate.midLeft= ["",3]
+    gamestate.midCen= ["",4]
+    gamestate.midRight= ["",5]
+    gamestate.bottomLeft= ["",6]
+    gamestate.bottomCen= ["",7]
+    gamestate.bottomRight= ["",8]
+    buildBoard();
+    updateScreenInfo();
+    $('.gameSquare').className='gameSquare';
+    $('.gameSquare').html('');
+    $('#endGame').addClass('hidden');
+    $('.container').removeClass('blur');
 }
 

@@ -43,6 +43,24 @@ input{
 #start{
     display: block;
 }
-.start, .hidden{
-    border:1px solid black
+.start{
+    position: absolute;
+    background-color: aquamarine;
+    width: 500px;
+    height: 500px;
+    border:1px solid black;
+}
+.blur{
+    filter: blur(10px);
+    pointer-events: none;
+}
+#endGame{
+    position: absolute;
+    background-color: aquamarine;
+    width: 500px;
+    height: 500px;
+    border:1px solid black;
+}
+.gameSquare img{
+    pointer-events: none;
 }
