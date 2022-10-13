@@ -201,3 +201,14 @@ input{
 #gameOver{
     text-align: center;
 }
+#github{
+    position: absolute;
+    display: block;
+    top: 623px;
+    left: 1539px;
+    /* background-color: aqua; */
+    height: 50px;
+    width: 45px;
+    border-radius: 13px;
+    box-shadow: 0 0 10px #ffc909;
+}
