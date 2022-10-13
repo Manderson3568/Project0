@@ -1,43 +1,16 @@
-# Intro to Markdown
+# Tic Tact Toe Wars
 
-## Subheading
+This is a project for SEI - 57 at GA. 
 
-### Subsubheading
+## Technologies used
 
-paragraphs are automatically respected.
+This project was built using HTML, CSS, javascript and Jquery.
 
-this is a seperate paragraph.
+## Usage
+Can be opened in any web browser
 
-## blockQuotes
-
->this is a quote -- by Me
-
-## Lists
-* list 1
-* list 2
-* list 3
-
-1. you dont even need to do different numbers
-1.
-1.
-1.
-
-
-## Code Formatting
-
-Jquery makes frequent use of the `$` variable The DOM favours the `Document` object.
-
-```javascript
-const hey = function(){
-    console.log("hey")
-}
-```
+## Thanks
+Thanks to Joel and Loden for running a great class and teaching me how to do all these things. 
 
 ## Links
-here is a [link](http://google.com) to the W3C
-
-## formatting
-we can add *italic Emphasis*, **Bold emphasis**, or ***Bold Italic empasis***
-
-## Images
-![Bill Murray](https://www.fillmurray.com/50/50)
+Live page [Here](https://manderson3568.github.io/Project0/starWars.html)

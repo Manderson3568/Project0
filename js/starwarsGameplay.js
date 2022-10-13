@@ -1,3 +1,49 @@
+const sithTitles=[
+    {
+        name:"The Scarred"
+    },
+    {
+        name:"The Malevolant"
+    },
+    {
+        name:"The Cowardly"
+    },
+    {
+        name:"The Indomitable"
+    },
+    {
+        name:"The Mighty"
+    },
+    {
+        name:"The Gungan Hunter"
+    }
+]
+
+const jediTitles=[
+    {
+        name:"The Holy"
+    },
+    {
+        name:"The Undaunted"
+    },
+    {
+        name:"The Mighty"
+    },
+    {
+        name:"The Frail"
+    },
+    {
+        name:"The Blind"
+    },
+    {
+        name:"The Gungan Hunter"
+    }
+]
+
+function randomArr(array){
+    return array[Math.floor(Math.random()*array.length)]
+}
+var theme = new Audio('sounds/theme.mp3');
 
 // an object to store all the game information. anything player related keeps the same index for their information.
 const gamestate={
@@ -57,55 +103,59 @@ $(document).ready(function(){
         }
         updateScreenInfo();   // updates the screen information
     })
-
+    $('#reset').on('click', resetGame)
 });
 
 function starwarsScroller(){
-    // console.log('click')
-    gamestate.playerNames[0] = $('#JediInput').val();
-    gamestate.playerNames[1]= $('#SithInput').val();
+    if($('#JediInput').val()!==""&& $('#SithInput').val()!==""){    
+    theme.play();
+    gamestate.playerNames[0] = `Jedi Knight ${$('#JediInput').val()} ${randomArr(jediTitles).name}`;
+    gamestate.playerNames[1] = `Darth ${$('#SithInput').val()} ${randomArr(sithTitles).name}`;
     $('#jediName').html(gamestate.playerNames[0]);
     $('#sithName').html(gamestate.playerNames[1]);
     startGame();
     $('#getNames').addClass('hidden');
     $('#scrollingText').removeClass('hidden');
     setTimeout(fromScroller,30000);
-}
+    }else{
+        alert('Must enter names')
+    }
+};
 function startGame(){
     gamestate.currentTurn= Math.floor(Math.random()*2); // chooes who gets to go first
     gamestate.board = buildBoard();
     updateScreenInfo();
-}
+};
 function updateScreenInfo(){
-    $('#playerOneName').html(`Player One: ${gamestate.playerNames[0]}`);
-    $('#playerTwoName').html(`Player Two: ${gamestate.playerNames[1]}`);
+    $('#playerOneName').html(`${gamestate.playerNames[0]}`);
+    $('#playerTwoName').html(`${gamestate.playerNames[1]}`);
     $('#playerOneScore').html(`Score: ${gamestate.scores[0]}`);
     $('#playerTwoScore').html(`Score: ${gamestate.scores[1]}`);
-    $('#currentTurn').html(`${gamestate.playerNames[gamestate.currentTurn]}'s attack`)
-    $('#roundCount').html(`Round ${gamestate.roundCount}:`)
-}
+    $('#currentTurn').html(`Round ${gamestate.roundCount}: ${gamestate.playerNames[gamestate.currentTurn]}'s attack`)
+
+};
 
 function roundCount(){
     gamestate.roundCount++
     if (gamestate.roundCount === 10 ){
         tie();
-    }
-}
+    };
+};
 
 function tie(){
     console.log('its a tie')
-}
+};
 
 function checkWin(player,index){
     check(player,index,3);
     checkHori(player,index);
     check(player,index,4);
     check(player,index,2);
-}
+};
 
 function validate(checkIndex,win,square,player){
     return checkIndex <9 && checkIndex>=0&& win<2 && square===player
-}
+};
 
 function check(player,index,increment){
     let win = 0;
@@ -128,8 +178,8 @@ function check(player,index,increment){
     };
     if(win>=2){
         gameOver();
-    }
-}
+    };
+};
 
 function checkHori(player,index){
     let win = 0;
@@ -162,8 +212,20 @@ function checkHori(player,index){
 
 
 function gameOver(){
-    alert('win')
+    if(gamestate.currentTurn === 0){
+        $('#winQuote').html(`<p>${gamestate.playerNames[gamestate.currentTurn]} Wins!</p>`);
+        $('#vicImg').attr('src','img/victoryYouSay.jpeg')
+        let sound= new Audio('sounds/yoda.mp3');
+        sound.play();
+    }else{
+        $('#winQuote').html(`<p>${gamestate.playerNames[gamestate.currentTurn]} Wins!</p>`);
+        $('#vicImg').attr('src','img/unlimitedPower.jpeg')
+        let sound= new Audio('sounds/unlimited-power_mB9IhRp.mp3');
+        sound.play();
+    }
     gamestate.scores[gamestate.currentTurn]++  
+    $('#gameBox').addClass('hidden');
+    $('#gameOver').removeClass('hidden')
 //random end of game response here
 }
 
@@ -183,14 +245,16 @@ function resetGame(){
     updateScreenInfo();
     $('.gameSquare').className='gameSquare';
     $('.gameSquare').html('');
+    $('#gameBox').removeClass('hidden');
+    $('#gameOver').addClass('hidden')
 }
 
 function fromScroller(){
+    theme.pause();
     $('#scrollingText').addClass('hidden');
     game();
 }
 function game(){
 
     $('#gameBox').removeClass('hidden');
-
 }

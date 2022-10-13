@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Roboto:wght@400;700&display=swap');
 body{
     background-color: black;
 }
@@ -42,6 +43,8 @@ body{
 }
 h1, h2{
     text-align: center;
+    font-family: 'Cinzel Decorative', cursive;
+font-family: 'Roboto', sans-serif;
 }
 @keyframes scroll{
     from{top:1000px; transform: translateZ(0) rotateX(20deg);}
@@ -84,7 +87,7 @@ input{
     border: 2px solid #404040;
     line-height: 50px;
     font-size:40px;
-    color: aqua;
+    color: #ffc909;
     text-align: center;
 }
 .logoFlareRed{
@@ -106,7 +109,7 @@ input{
     left: 425px;
     z-index: 1;
 }
-#destiny{
+#destiny, #reset{
     display: block;
     margin: 0 auto;
     height:60px;
@@ -119,6 +122,7 @@ input{
     z-index: 1;
     top: 750px;
     left: 445px;
+    color: #ffc909;
 }
 .caps{
     text-transform: uppercase;
@@ -129,6 +133,11 @@ input{
     border: 1px solid rgb(231, 187, 57);
     display: inline-block;
     margin: 10px;
+}
+.gameSquare img{
+    pointer-events: none;
+    margin: 0;
+    display: block;
 }
 .gameContainer{
     width: 550px;
@@ -141,25 +150,25 @@ input{
     pointer-events: none;
 }
 #hiltBottomLeft{
-    top: 535px;
+    top: 598px;
     left: 235px;
     height: 100px;
     transform: rotate(60deg);
 }
 #hiltTopLeft{
-    top: 311px;
+    top: 375px;
     left: 235px;
     height: 100px;
     transform: rotate(300deg)rotateX(180deg);
 }
 #hiltLeftBottom{
-    top: 735px;
+    top: 787px;
     left: 455px;
     height: 100px;
     transform: rotate(-16deg);
 }
 #hiltRightBottom{
-    top: 735px;
+    top: 787px;
     left: 634px;
     height: 90px;
     transform: rotate(-16deg);
@@ -172,10 +181,23 @@ input{
     padding: 10px;
     box-sizing: border-box;
 }
-.right{
-    float: right;
-}
+
 .gameSquare img {
     height: 100%;
     width: 100%;
+}
+.playerStats{
+    background: linear-gradient(90deg, rgba(54,82,143,0) 10%, rgba(12, 71, 134, 0.75) 50%, rgba(54,82,143,0) 90%);  
+}
+.right{
+    float: right;
+    background: linear-gradient(90deg, rgba(143,54,54,0) 9%, rgba(109, 9, 9, 0.764) 50%, rgba(143,54,54,0) 89%);
+}
+#vicImg{
+    width: 900px;
+    display: block;
+    margin: 0 auto;
+}
+#gameOver{
+    text-align: center;
 }

@@ -38,44 +38,55 @@
                 <div id="scrollBox">
                     <h1>STAR WARS</h1>
                     <h2>The Great Tic-Tac-Toe Wars</h2>
-                    <p>It has been 20 years since darkness fell over the galaxy and EMPORER PALPATINE enacted the revenge of the Sith. The Galaxy is in a state of unrest, the REBEL ALLIANCE has stirred up the population of many outter and mid rim systems. JEDI KNIGHT <span id="jediName" class="caps"></span> has been trained in secret by GRAND MASTER YODA to seek out imperial force users and foil their eil plans.</p>
-                    <p>Palpatine has grown concerned about the continual failures of DARTH VADER to quell the rebellion, he has trained a new apprentice to one day take Vader's position as his right hand. After surviving order 66 DARTH <span id="sithName" class="caps"></span> was captured by the Emporer after a failed assassination attempt. Instead of execution they have been charged with hunting down a new Jedi nuisence</p>
+                    <p>It has been 20 years since darkness fell over the galaxy and EMPEROR PALPATINE enacted the revenge of the Sith. The Galaxy is in a state of unrest, the REBEL ALLIANCE has stirred up the population of many outer and mid rim systems. <span id="jediName" class="caps"></span> has been trained in secret by GRAND MASTER YODA to seek out imperial force users and foil their evil plans.</p>
+                    <p>Palpatine has grown concerned about the continual failures of DARTH VADER to quell the rebellion, he has trained a new apprentice to one day take Vader's position as his right hand. After surviving order 66 <span id="sithName" class="caps"></span> was captured by the Emporer after a failed assassination attempt. Instead of execution, they have been charged with hunting down this new Jedi nuisance.</p>
                 </div>
             </div>
         </div>
         
-            <!-- Game box -->
-    <div class="content hidden" id="gameBox">
-        <h1>Tic-Tac-Toe Wars</h1>
-        <div class="playerStats">
-            <img src="" alt="" class="playerPic" id="playerOnePic">
-            <p class="playerName" id="playerOneName">Player One</p>
-            <p class="playerScore" id="playerOneScore">Score:</p>
+        <!-- Game box -->
+        <div class="content hidden" id="gameBox">
+            <h1>Tic-Tac-Toe Wars</h1>
+            <div class="playerStats">
+                <img src="" alt="" class="playerPic" id="playerOnePic">
+                <p class="playerName" id="playerOneName">Player One</p>
+                <p class="playerScore" id="playerOneScore">Score:</p>
+            </div>
+            <div class="playerStats right">
+                <img src="" alt="" class="playerPic" id="playerTwoPic">
+                <p class="playerName" id="playerTwoName">Player Two</p>
+                <p class="playerScore" id="playerTwoScore">Score</p>
+            </div>
+            <div>
+                <h4 id="currentTurn"></h4>
+            </div>
+            <div class="gameContainer">
+                <div class="gameSquare" id="topLeft"></div>
+                <div class="gameSquare" id="topCen"></div>
+                <div class="gameSquare" id="topRight"></div>
+                <div class="gameSquare" id="midLeft"></div>
+                <div class="gameSquare" id="midCen"></div>
+                <div class="gameSquare" id="midRight"></div>
+                <div class="gameSquare" id="bottomLeft"></div>
+                <div class="gameSquare" id="bottomCen"></div>
+                <div class="gameSquare" id="bottomRight"></div>
+            </div>
+            <img src="img/SithLightsaber.png" alt="" class="hilt" id="hiltBottomLeft">
+            <img src="img/SithLightsaberTop.png" alt="" class="hilt" id="hiltTopLeft">
+            <img src="img/tanoBlade1.png" alt="" class="hilt" id="hiltLeftBottom">
+            <img src="img/tanoBlade2.png" alt="" class="hilt" id="hiltRightBottom">
+            <img src="img/redBlade.png" alt="" class="hilt" id="bladeBottomLeft">
+            <img src="img/redBlade.png" alt="" class="hilt" id="bladeTopLeft">
+            <img src="img/blueBlade.png" alt="" class="hilt" id="bladeLeftBottom">
+            <img src="img/blueBlade.png" alt="" class="hilt" id="bladeRightBottom">
         </div>
-        <div class="playerStats right">
-            <img src="" alt="" class="playerPic" id="playerTwoPic">
-            <p class="playerName" id="playerTwoName">Player Two</p>
-            <p class="playerScore" id="playerTwoScore">Score</p>
+
+        <!-- game over, man, GMAE OVER!! -->
+        <div class="content hidden" id="gameOver">
+            <h1>Game Over</h1>
+            <img src="" alt="" id="vicImg">
+            <div class="quote" id="winQuote"></div>
+            <button id="reset">Duel Again</button>
         </div>
-        <div>
-            <h3 id="roundCount"></h3>
-            <h4 id="currentTurn"></h4>
-        </div>
-        <div class="gameContainer">
-            <div class="gameSquare" id="topLeft"></div>
-            <div class="gameSquare" id="topCen"></div>
-            <div class="gameSquare" id="topRight"></div>
-            <div class="gameSquare" id="midLeft"></div>
-            <div class="gameSquare" id="midCen"></div>
-            <div class="gameSquare" id="midRight"></div>
-            <div class="gameSquare" id="bottomLeft"></div>
-            <div class="gameSquare" id="bottomCen"></div>
-            <div class="gameSquare" id="bottomRight"></div>
-        </div>
-        <img src="img/SithLightsaber.png" alt="" class="hilt" id="hiltBottomLeft">
-        <img src="img/SithLightsaberTop.png" alt="" class="hilt" id="hiltTopLeft">
-        <img src="img/tanoBlade1.png" alt="" class="hilt" id="hiltLeftBottom">
-        <img src="img/tanoBlade2.png" alt="" class="hilt" id="hiltRightBottom">
-    </div>
     </div>
 </body>
