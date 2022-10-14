@@ -86,6 +86,7 @@ $(document).ready(function(){
         const gameSquare = gamestate[e.target.id]; //uses the ID as the object key
         let turn = gamestate.currentTurn
         if(gameSquare[0]===''){ //checks of the square clicked is empty
+//=============================[3]=====================
             $(e.target).html(`<img src="${gamestate.playerSymbols[turn]}"></img>`)//fills in the image 
             gameSquare[0] = gamestate.playerNames[turn]// fills the array to indicate the spot is used
             buildBoard(); //updates board array
@@ -101,6 +102,8 @@ $(document).ready(function(){
         }
         updateScreenInfo();   // updates the screen information
     })
+
+//reset button for the end of the round    
     $('#reset').on('click', resetGame)
 });
 
@@ -153,7 +156,7 @@ function checkWin(player,index){
     // neg diag
     check(player,index,2);
 };
-
+// ================[4]=======================
 function check(player,index,increment){
     let win = 0;
     let checkIndex = index+increment;
@@ -184,7 +187,7 @@ function check(player,index,increment){
     };
 };
 
-
+// ==========[5]=======================
 function checkHori(player,index){
     let win = 0;
     const row = Math.floor(index/3)
@@ -231,7 +234,7 @@ function gameOver(){
     $('#gameOver').removeClass('hidden')
     gamestate.scores[gamestate.currentTurn]++  
 }
-
+// =============[6]==========================
 function resetGame(){
     gamestate.roundCount=1
     gamestate.topLeft= ["",0]

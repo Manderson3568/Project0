@@ -41,7 +41,7 @@ body{
     height: 40%;
     background: linear-gradient(180deg, rgba(20,20,20,1)40%, rgba(20,20,20,0)100%);
 }
-
+/* =================text scroller======================== */
 #scrollBox{
     color: #ffc909;
     font-size: 40px;
