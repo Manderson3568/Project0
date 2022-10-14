@@ -48,7 +48,7 @@ var theme = new Audio('sounds/theme.mp3');
 // an object to store all the game information. anything player related keeps the same index for their information.
 const gamestate={
     playerNames:["player-One","player-Two"],
-    playerSymbols:['img/x.jpeg','img/0.png'],
+    playerSymbols:['img/jediLogo.png','img/sithLogo.png'],
     scores:[0,0],
     currentTurn: 0,
     board: ["","","","","","","","",""],
@@ -84,13 +84,11 @@ $(document).ready(function(){
     $('#destiny').on('click',starwarsScroller)
     $('.gameSquare').on('click',function(e){
         const gameSquare = gamestate[e.target.id]; //uses the ID as the object key
-        // console.log(`ID: `, e.target.id, "gameSquare:", gameSquare);
         let turn = gamestate.currentTurn
         if(gameSquare[0]===''){ //checks of the square clicked is empty
             $(e.target).html(`<img src="${gamestate.playerSymbols[turn]}"></img>`)//fills in the image 
             gameSquare[0] = gamestate.playerNames[turn]// fills the array to indicate the spot is used
             buildBoard(); //updates board array
-            // console.log(gamestate.board);
             checkWin(gameSquare[0], gameSquare[1]); // feeds in the array value and index to be checked for win condition
             roundCount(); //checks for tie condition and increments turn count
             if(turn===0){ //swaps player turn
@@ -99,7 +97,7 @@ $(document).ready(function(){
                 gamestate.currentTurn=0;
             }
         }else{
-            console.log('already taken') // to be replaced with a fail noise
+            // console.log('already taken') // to be replaced with a fail noise
         }
         updateScreenInfo();   // updates the screen information
     })
@@ -143,36 +141,41 @@ function roundCount(){
 };
 
 function tie(){
-    console.log('its a tie')
+    resetGame();
 };
 
 function checkWin(player,index){
+    // Vertical
     check(player,index,3);
     checkHori(player,index);
+    // pos diag
     check(player,index,4);
+    // neg diag
     check(player,index,2);
-};
-
-function validate(checkIndex,win,square,player){
-    return checkIndex <9 && checkIndex>=0&& win<2 && square===player
 };
 
 function check(player,index,increment){
     let win = 0;
     let checkIndex = index+increment;
+    let row = Math.floor(index/3)
+    let checkRow = Math.floor(checkIndex/3)
     const board = gamestate.board
-    if(validate(checkIndex,win,board[checkIndex],player)){
+    if(checkIndex<9 && checkIndex>=0 && board[checkIndex]===player&& checkRow===row+1){
         win++
-        checkIndex+=increment
-        if (validate(checkIndex,win,board[checkIndex],player)){
+        checkIndex= checkIndex+ increment
+        checkRow = Math.floor(checkIndex/3)
+        if (checkIndex<9 && checkIndex>=0 && board[checkIndex]===player&& checkRow===row+2){
             win++;
         };
     };
     checkIndex = index-increment;
-    if(validate(checkIndex,win,board[checkIndex],player)){
-        win++
-        checkIndex-=increment
-        if (validate(checkIndex,win,board[checkIndex],player)){
+    checkRow = Math.floor(checkIndex/3);
+    if(checkIndex<9 && checkIndex>=0 && board[checkIndex]===player&& checkRow===row-1){
+        win++;
+        console.log(win,checkIndex);
+        checkIndex= checkIndex - increment;
+        checkRow = Math.floor(checkIndex/3);
+        if (checkIndex<9 && checkIndex>=0 && board[checkIndex]===player&& checkRow===row-2){
             win++;
         };
     };
@@ -180,6 +183,7 @@ function check(player,index,increment){
         gameOver();
     };
 };
+
 
 function checkHori(player,index){
     let win = 0;
@@ -223,14 +227,12 @@ function gameOver(){
         let sound= new Audio('sounds/unlimited-power_mB9IhRp.mp3');
         sound.play();
     }
-    gamestate.scores[gamestate.currentTurn]++  
     $('#gameBox').addClass('hidden');
     $('#gameOver').removeClass('hidden')
-//random end of game response here
+    gamestate.scores[gamestate.currentTurn]++  
 }
 
 function resetGame(){
-    console.log('play again')
     gamestate.roundCount=1
     gamestate.topLeft= ["",0]
     gamestate.topCen= ["",1]
@@ -255,6 +257,5 @@ function fromScroller(){
     game();
 }
 function game(){
-
     $('#gameBox').removeClass('hidden');
 }
